@@ -6792,6 +6792,7 @@ AABJRU5ErkJgggs='))
 	$OSComboBox.Font = [System.Drawing.Font]::new('Segoe UI Semibold', '10', [System.Drawing.FontStyle]'Bold')
 	$OSComboBox.ForeColor = [System.Drawing.Color]::Black 
 	$OSComboBox.FormattingEnabled = $True
+	[void]$OSComboBox.Items.Add('Windows 10 20H2')
 	[void]$OSComboBox.Items.Add('Windows 10 2004')
 	[void]$OSComboBox.Items.Add('Windows 10 1909')
 	[void]$OSComboBox.Items.Add('Windows 10 1903')
@@ -9868,6 +9869,7 @@ aHlkaHlkaHlkaHlkaHlkaHlkaHlkaHlkaFnms68WxfyoJ3KVKAAAAABJRU5ErkJgggs='))
 	[void]$ConfigMgrPkgActionCombo.Items.Add('Move to Production')
 	[void]$ConfigMgrPkgActionCombo.Items.Add('Move to Pilot')
 	[void]$ConfigMgrPkgActionCombo.Items.Add('Mark as Retired')
+	[void]$ConfigMgrPkgActionCombo.Items.Add('Move to Windows 10 20H2')
 	[void]$ConfigMgrPkgActionCombo.Items.Add('Move to Windows 10 2004')
 	[void]$ConfigMgrPkgActionCombo.Items.Add('Move to Windows 10 1909')
 	[void]$ConfigMgrPkgActionCombo.Items.Add('Move to Windows 10 1903')
@@ -11495,6 +11497,7 @@ THIS SCRIPT MUST NOT BE EDITED AND REDISTRIBUTED WITHOUT EXPRESS PERMISSION OF T
 	$OperatingSystem.DefaultCellStyle = $System_Windows_Forms_DataGridViewCellStyle_12
 	$OperatingSystem.DisplayStyle = 'ComboBox'
 	$OperatingSystem.HeaderText = 'Operating System'
+	[void]$OperatingSystem.Items.Add('Windows 10 20H2')
 	[void]$OperatingSystem.Items.Add('Windows 10 2004')
 	[void]$OperatingSystem.Items.Add('Windows 10 1909')
 	[void]$OperatingSystem.Items.Add('Windows 10 1903')
@@ -11909,6 +11912,7 @@ AABJRU5ErkJgggs='))
 	
 	# Windows Version Hash Table
 	$WindowsBuildHashTable = @{`
+		20H2 = "10.0.19042.1";`
 		2004 = "10.0.19041.1";`
 		1909 = "10.0.18363.1";`
 		1903 = "10.0.18362.1";`
@@ -13007,6 +13011,9 @@ AABJRU5ErkJgggs='))
 			if ($global:SkuValue -ne $null) {
 				# Windows Build Driver Switch
 				switch -Wildcard ($OS) {
+					"*20H2"	{
+						$OS = "10.0.2009"
+					}
 					"*2004"	{
 						$OS = "10.0.2004"
 					}
@@ -16057,6 +16064,9 @@ AABJRU5ErkJgggs='))
 				"*Retired*" {
 					$PackagePrefix = "$PackageType Retired "
 					$State = "retired"
+				}
+				"*Windows 10 20H2*"{
+					$Win10Version = "20H2"
 				}
 				"*Windows 10 2004*"{
 					$Win10Version = "2004"
